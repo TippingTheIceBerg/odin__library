@@ -1,3 +1,8 @@
+// 1. when user refreshes page, cards should still be there
+// 2. Ability to remove books, 
+// 3. edit books
+
+
 import { library } from "./library.js";
 import { libraryStorage } from "./libraryStorage.js";
 
@@ -9,7 +14,7 @@ let storedBooks = libraryStorage.storeBooks;
 let retrievedBooks = libraryStorage.retrievedBooks;
 storedBooks;
 
-retrievedBooks!= ""? console.log("no books"): console.log("some books");
+
 
 // gets html form values
 let getFormTitle = document.querySelector(".title");
@@ -36,6 +41,7 @@ let pagesReadValue ;
 let  readStatusValue;
 let  titleValue;
 
+let selectBookCardsContainer = document.querySelector(".books__card")
 
 function addBook(){
     authorValue = getFormAuthor.value;
@@ -43,9 +49,22 @@ function addBook(){
     pagesReadValue = getFormPagesRead.value;
     readStatusValue = getFormReadStatus.value;
     titleValue = getFormTitle.value;
+    createBookCard();
 
 }
 
+let paragraph ;
+
+function createBookCard(){
+    let div = document.createElement("div")
+    paragraph = document.createElement("p");
+    console.log(titleValue);
+    paragraph.textContent = ` Title :${titleValue} Author: ${authorValue} Pages: ${pagesValue} Pages Read: ${pagesReadValue} Read Status: ${readStatusValue} `;
+    div.classList.add("book__card")
+    div.append(paragraph);
+    selectBookCardsContainer.append(div);
+    
+};
 
 btn.addEventListener("click", () =>{
     addBook();

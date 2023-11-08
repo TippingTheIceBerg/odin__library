@@ -7,3 +7,8 @@
 fieldset{
     padding: 10px 0;
 }
+
+.book__card{
+    border: solid black 20px;
+    padding: 20px;
+}
